@@ -1,16 +1,14 @@
 #!/bin/bash
 
-response_html=$(curl -s "https://allbible.info/ajax/randomverse/")
+# Get the response from the Forismatic API
+response_json=$(curl -s "https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?")
 
-verse_text=$(echo "$response_html" | awk '/id="sinodal"/,/<\/div>/')
-cleaned_text=$(echo "$verse_text" | sed -e 's/<div id="sinodal" class="w_verse_text">//;s/<\/div>//' | iconv -f windows-1251 -t UTF-8
-)
+# Extract the quote and author from the JSON response
+quote=$(echo "$response_json" | sed -n 's/^.*"quoteText":"\([^"]*\)".*$/\1/p')
+author=$(echo "$response_json" | sed -n 's/^.*"quoteAuthor":"\([^"]*\)".*$/\1/p')
 
-verse_reference=$(echo "$response_html" | awk '/class="w_verse_name"/,/<\/div>/')
-cleaned_reference=$(echo "$verse_reference" | perl -pe 's/.*href="\/\/allbible.info\/bible\/sinodal\/[^>]*>(.*?)<\/a>.*/\1/' | sed -e 's/<div class="w_verse_name">//;s/<\/div>//' | iconv -f windows-1251 -t UTF-8
-)
+# Combine the quote and author
+result=$(echo "$quote ($author)" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | tr -d '\n')
 
-result=$(echo "$cleaned_text ($cleaned_reference)" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | tr -d '\n')
+# Send the notification
 notify-send "$result" -t 12000
-
-
