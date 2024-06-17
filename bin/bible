@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the response from the Forismatic API
-response_json=$(curl -s "https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?")
+response_json=$(curl -s "https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=ru&jsonp=?")
 
 # Extract the quote and author from the JSON response
 quote=$(echo "$response_json" | sed -n 's/^.*"quoteText":"\([^"]*\)".*$/\1/p')
