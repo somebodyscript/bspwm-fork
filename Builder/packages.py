@@ -13,7 +13,7 @@ BASE_PACKAGES = [
     "vlc", "usbutils", "picom", "networkmanager-openvpn", "alsa-plugins", "alsa-tools", "alsa-utils", "ffmpeg",
     "p7zip", "gparted", "sshfs", "openvpn", "xclip", "gpick", "wget", "ueberzug", "netctl", "light", "libreoffice",
     "breeze", "vulkan-intel", "intel-ucode", "ttf-jetbrains-mono", "ttf-jetbrains-mono-nerd", "ttf-fira-code",
-    "ttf-iosevka-nerd", "noto-fonts-emoji"
+    "ttf-iosevka-nerd", "noto-fonts-emoji", "flameshot"
 ]
 
 DEV_PACKAGES = [
@@ -21,7 +21,7 @@ DEV_PACKAGES = [
     "filezilla", "ghex", "chromium", "keepassxc", "audacity", "gufw", "python-pywal",
     "bleachbit", "veracrypt", "homebank", "gtkhash", "gnome-firmware", "touche", "dconf-editor",
     "neovim", "obs-studio", "telegram-desktop", "tmux", "youtube-dl", "code", "cowsay",
-    "deluge-gtk", "flameshot", "sqlitebrowser", "obsidian", "python-pip", "bpython", "ipython", "cloc",
+    "deluge-gtk", "sqlitebrowser", "obsidian", "python-pip", "bpython", "ipython", "cloc",
 ]
 
 AUR_PACKAGES = [
