@@ -16,6 +16,9 @@ super + p
 super + w
 	sh $HOME/bin/random_wallpaper
 
+super + v
+    sh $HOME/bin/clipboard.sh
+
 # Change language
 Alt_L + shift
 	sh $HOME/bin/change_language.sh
